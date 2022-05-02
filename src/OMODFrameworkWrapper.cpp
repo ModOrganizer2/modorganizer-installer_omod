@@ -4,6 +4,7 @@ using namespace cli;
 
 #include <algorithm>
 #include <array>
+#include <filesystem>
 
 #include <QMessageBox>
 #include <QTemporaryDir>
@@ -32,6 +33,28 @@ using namespace cli;
 
 #include "MessageBoxHelper.h"
 
+namespace fs = std::filesystem;
+
+// retrieve the path to the folder containing the proxy DLL
+fs::path getPluginFolder()
+{
+  wchar_t path[MAX_PATH];
+  HMODULE hm = NULL;
+
+  if (GetModuleHandleEx(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS |
+                            GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
+                        (LPCWSTR)&getPluginFolder, &hm) == 0)
+  {
+    return {};
+  }
+  if (GetModuleFileName(hm, path, sizeof(path)) == 0)
+  {
+    return {};
+  }
+
+  return fs::path(path).parent_path();
+}
+
 // We want to search the plugin data directory for .NET DLLs
 class AssemblyResolver
 {
@@ -42,7 +65,7 @@ public:
   {
     if (sInitialised)
       return;
-    sPluginDataPath = organizer->pluginDataPath();
+    sPluginDataPath = getPluginFolder();
     System::AppDomain::CurrentDomain->AssemblyResolve += gcnew System::ResolveEventHandler(&OnAssemblyResolve);
     sInitialised = true;
   }
