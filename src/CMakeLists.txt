@@ -48,7 +48,7 @@ target_compile_definitions(installer_omod PRIVATE "NOGDI")
 # aren't pulled in. We do need it to build first, though.
 add_dependencies(installer_omod dummy_cs_project)
 
-mo2_install_target(installer_omod)
+mo2_install_target(installer_omod FOLDER)
 
 install(
 	FILES
@@ -57,7 +57,7 @@ install(
 	"$<TARGET_FILE_DIR:${PROJECT_NAME}>/ICSharpCode.SharpZipLib.dll"
 	"$<TARGET_FILE_DIR:${PROJECT_NAME}>/System.Drawing.Common.dll"
 	"$<TARGET_FILE_DIR:${PROJECT_NAME}>/RtfPipe.dll"
-	DESTINATION "${MO2_INSTALL_PATH}/bin/plugins/data"
+	DESTINATION "${MO2_INSTALL_PATH}/bin/plugins/installer_omod/"
 )
 install(
 	FILES "$<TARGET_PDB_FILE_DIR:${PROJECT_NAME}>/ICSharpCode.SharpZipLib.pdb"
