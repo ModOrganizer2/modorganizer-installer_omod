@@ -36,8 +36,6 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 target_compile_options(
 	installer_omod
 	PRIVATE
-	# C++/CLI doesn't support two-phase lookup yet
-	"/Zc:twoPhase-"
 	# OMODFramework and OMODFramework.Scripting reference different .NET standard libraries. This generates warnings when using them together.
 	"/wd4691")
 
