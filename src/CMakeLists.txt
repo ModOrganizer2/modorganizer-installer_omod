@@ -24,8 +24,8 @@ set(omod_framework_prefix "${CMAKE_BINARY_DIR}/$(Configuration)"
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
 	COMMON_LANGUAGE_RUNTIME ""
-	# latest doesn't work with CLR
-	CXX_STANDARD 17
+	# latest may not work with CLR
+	CXX_STANDARD 20
 	#DOTNET_TARGET_FRAMEWORK "netstandard2.0"
 	VS_DOTNET_REFERENCE_OMODFramework "${omod_framework_prefix}/OMODFramework.dll"
 	VS_DOTNET_REFERENCE_OMODFramework.Scripting "${omod_framework_prefix}/OMODFramework.Scripting.dll"
