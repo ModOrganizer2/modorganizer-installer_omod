@@ -1,6 +1,8 @@
 #ifndef INSTALLEROMOD_H
 #define INSTALLEROMOD_H
 
+#include <QTemporaryFile>
+
 #include <iplugininstallercustom.h>
 #include <ipluginfilemapper.h>
 
