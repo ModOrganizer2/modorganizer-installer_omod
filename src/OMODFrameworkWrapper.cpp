@@ -267,7 +267,7 @@ OMODFrameworkWrapper::EInstallResult OMODFrameworkWrapper::install(MOBase::Guess
         System::Collections::Generic::List<System::String^>^ activeBSAs = gcnew System::Collections::Generic::List<System::String^>();
         {
           // Hopefully some other part of MO2 also knows this and this can be refactored
-          auto dataArchives = mMoInfo->managedGame()->feature<DataArchives>();
+          auto dataArchives = mMoInfo->gameFeatures()->gameFeature<MOBase::DataArchives>();
           // force-enabled by engine
           auto bsas = dataArchives->vanillaArchives();
           // explicitly enabled in INI. For Oblivion, excludes the vanilla BSAs by default.
@@ -655,7 +655,7 @@ void OMODFrameworkWrapper::onInstallationEnd(EInstallResult status, MOBase::IMod
     }
 
     // this is still ugly.
-    mMoInfo->managedGame()->feature<GamePlugins>()->writePluginLists(mMoInfo->pluginList());
+    mMoInfo->gameFeatures()->gameFeature<MOBase::GamePlugins>()->writePluginLists(mMoInfo->pluginList());
 
 
     QStringList registeredBSAs = mod->pluginSetting("Omod Installer", omodName + ".registeredBSAs", QStringList()).toStringList();
