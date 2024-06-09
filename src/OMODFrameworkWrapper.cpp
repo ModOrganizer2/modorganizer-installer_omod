@@ -43,8 +43,8 @@ fs::path getPluginFolder()
   HMODULE hm = NULL;
 
   if (GetModuleHandleEx(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS |
-    GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
-    (LPCWSTR)&getPluginFolder, &hm) == 0)
+                            GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
+                        (LPCWSTR)&getPluginFolder, &hm) == 0)
   {
     return {};
   }
@@ -300,7 +300,7 @@ OMODFrameworkWrapper::EInstallResult OMODFrameworkWrapper::install(MOBase::Guess
 
         System::String^ dataPath = omod.GetDataFiles();
         System::String^ pluginsPath = omod.GetPlugins();
-        OMODFramework::ScriptReturnData^ scriptData = OMODFramework::Scripting::ScriptRunner::RunScript(% omod, scriptFunctions, dataPath, pluginsPath);
+        OMODFramework::ScriptReturnData^ scriptData = OMODFramework::Scripting::ScriptRunner::RunScript(%omod, scriptFunctions, dataPath, pluginsPath);
         if (!scriptData)
           throw std::runtime_error("OMOD script returned no result. This isn't supposed to happen.");
         if (scriptData->CancelInstall)
@@ -394,7 +394,7 @@ OMODFrameworkWrapper::EInstallResult OMODFrameworkWrapper::install(MOBase::Guess
           }
         }
 
-        scriptData->Pretty(% omod, dataPath, pluginsPath);
+        scriptData->Pretty(%omod, dataPath, pluginsPath);
         // no compatability between auto and var makes me :angery:
         System::Collections::Generic::HashSet<System::String^>^ installedPlugins = gcnew System::Collections::Generic::HashSet<System::String^>(System::StringComparer::InvariantCultureIgnoreCase);
         for each (OMODFramework::InstallFile file in scriptData->InstallFiles)
@@ -551,11 +551,11 @@ void OMODFrameworkWrapper::onInstallationEnd(EInstallResult status, MOBase::IMod
   if (!omodsPendingPostInstall.empty() && !(mMoInfo->modList()->state(mod->name()) & MOBase::IModList::STATE_ACTIVE))
   {
     auto response = QMessageBox::question(mParentWidget, tr("Activate mod?"),
-      /*: %1 is the left-pane mod name.
-          %2 is the name from the metadata of an OMOD.
-      */
-      tr("%1 contains the OMOD %2. OMODs may have post-installation actions like activating ESPs. Would you like to enable the mod so this can happen now?").arg(mod->name()).arg(omodsPendingPostInstall[0]),
-      QMessageBox::Yes | QMessageBox::No);
+                                        /*: %1 is the left-pane mod name.
+                                            %2 is the name from the metadata of an OMOD.
+                                        */
+                                        tr("%1 contains the OMOD %2. OMODs may have post-installation actions like activating ESPs. Would you like to enable the mod so this can happen now?").arg(mod->name()).arg(omodsPendingPostInstall[0]),
+                                        QMessageBox::Yes | QMessageBox::No);
 
     if (response == QMessageBox::StandardButton::Yes)
       mMoInfo->modList()->setActive(mod->name(), true);
@@ -664,12 +664,12 @@ void OMODFrameworkWrapper::onInstallationEnd(EInstallResult status, MOBase::IMod
     {
       MOBase::log::debug("OMOD wants to register BSAs. We can't do that.");
       QMessageBox::warning(mParentWidget, tr("Register BSAs"),
-        /*: %1 is the OMOD name
-            <ul><li>%2</li></ul> becomes a list of BSA files
-        */
-        tr("%1 wants to register the following BSA archives, but Mod Organizer 2 can't do that yet due to technical limitations:<ul><li>%2</li></ul>For now, your options include adding the BSA names to <code>sResourceArchiveList</code> in the game INI, creating a dummy ESP with the same name, or extracting the BSA, all of which have drawbacks.")
-        .arg(omodName).arg(registeredBSAs.join("</li><li>"))
-      );
+                           /*: %1 is the OMOD name
+                               <ul><li>%2</li></ul> becomes a list of BSA files
+                           */
+                           tr("%1 wants to register the following BSA archives, but Mod Organizer 2 can't do that yet due to technical limitations:<ul><li>%2</li></ul>For now, your options include adding the BSA names to <code>sResourceArchiveList</code> in the game INI, creating a dummy ESP with the same name, or extracting the BSA, all of which have drawbacks.")
+                             .arg(omodName).arg(registeredBSAs.join("</li><li>"))
+                           );
     }
   }
 
