@@ -2,7 +2,7 @@
 
 using namespace cli;
 
-#include <log.h>
+#include <uibase/log.h>
 
 ref class Logger : OMODFramework::ILogger
 {

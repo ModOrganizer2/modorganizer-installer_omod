@@ -3,8 +3,8 @@
 #include <QRegularExpression>
 #include <QTemporaryFile>
 
-#include <iplugingame.h>
-#include <log.h>
+#include <uibase/iplugingame.h>
+#include <uibase/log.h>
 
 #include "OMODFrameworkWrapper.h"
 

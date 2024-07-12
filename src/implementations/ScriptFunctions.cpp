@@ -9,9 +9,9 @@
 #include <QMessageBox>
 #include <QScreen>
 
-#include <iplugingame.h>
-#include <ipluginlist.h>
-#include <log.h>
+#include <uibase/iplugingame.h>
+#include <uibase/ipluginlist.h>
+#include <uibase/log.h>
 
 #include "../interop/QtDotNetConverters.h"
 #include "../newstuff/rtfPopup.h"

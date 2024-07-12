@@ -4,7 +4,7 @@
 #include <QProgressDialog>
 #include <QStack>
 
-#include <iplugininstaller.h>
+#include <uibase/iplugininstaller.h>
 
 #include "implementations/CodeProgress.h"
 #include "QObject_unique_ptr.h"
