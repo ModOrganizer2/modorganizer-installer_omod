@@ -1,4 +1,4 @@
-name: Build Installer OMOD Library
+name: Build Installer OMOD
 
 on:
   push:
