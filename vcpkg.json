@@ -1,10 +1,16 @@
 {
   "dependencies": ["mo2-cmake"],
+  "features": {
+    "standalone": {
+      "description": "Build Standalone.",
+      "dependencies": ["mo2-uibase"]
+    }
+  },
   "vcpkg-configuration": {
     "default-registry": {
       "kind": "git",
       "repository": "https://github.com/ModOrganizer2/vcpkg-registry",
-      "baseline": "c55e3ab33eb170aefb1904ded8809cb88df6bb48"
+      "baseline": "a7aee8c0085f42b5e42f026cd4a41bad48d490da"
     }
   }
 }
