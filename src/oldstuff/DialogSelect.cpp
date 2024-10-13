@@ -230,7 +230,7 @@ std::optional<QVector<int>> DialogSelect(
     rightInner = new QWidget(right);
     rightScrollArea->setWidget(rightInner);
     rightScrollArea->setWidgetResizable(true);
-    
+
     rightInnerLayout = new QVBoxLayout(rightInner);
   }
   else
