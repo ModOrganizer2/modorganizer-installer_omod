@@ -15,6 +15,6 @@ jobs:
     steps:
       - name: Build Installer OMOD
         id: build-installer-omod
-        uses: ModOrganizer2/build-with-mob-action@dev/vcpkg
+        uses: ModOrganizer2/build-with-mob-action@master
         with:
           mo2-dependencies: uibase
