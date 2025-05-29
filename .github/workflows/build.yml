@@ -1,16 +1,20 @@
-name: Build Installer OMOD Plugin
+name: Build Installer OMOD
 
 on:
   push:
-    branches: master
+    branches: [master]
   pull_request:
     types: [opened, synchronize, reopened]
+
+env:
+  VCPKG_BINARY_SOURCES: clear;x-azblob,${{ vars.AZ_BLOB_VCPKG_URL }},${{ secrets.AZ_BLOB_SAS }},readwrite
 
 jobs:
   build:
     runs-on: windows-2022
     steps:
-      - name: Build Installer OMOD Plugin
+      - name: Build Installer OMOD
+        id: build-installer-omod
         uses: ModOrganizer2/build-with-mob-action@master
         with:
-          mo2-dependencies: cmake_common uibase
+          mo2-dependencies: uibase

@@ -10,17 +10,17 @@ using namespace cli;
 #include <QTemporaryDir>
 #include <QProgressDialog>
 
-#include <imodinterface.h>
-#include <imodlist.h>
-#include <iplugingame.h>
-#include <ipluginlist.h>
-#include <igamefeatures.h>
-#include <log.h>
-#include <utility.h>
-#include <registry.h>
+#include <uibase/imodinterface.h>
+#include <uibase/imodlist.h>
+#include <uibase/iplugingame.h>
+#include <uibase/ipluginlist.h>
+#include <uibase/game_features/igamefeatures.h>
+#include <uibase/log.h>
+#include <uibase/utility.h>
+#include <uibase/registry.h>
 
-#include <dataarchives.h>
-#include <gameplugins.h>
+#include <uibase/game_features/dataarchives.h>
+#include <uibase/game_features/gameplugins.h>
 
 #include "implementations/CodeProgress.h"
 #include "implementations/Logger.h"

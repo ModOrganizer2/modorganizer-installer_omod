@@ -3,8 +3,8 @@
 
 #include <QTemporaryFile>
 
-#include <iplugininstallercustom.h>
-#include <ipluginfilemapper.h>
+#include <uibase/iplugininstallercustom.h>
+#include <uibase/ipluginfilemapper.h>
 
 #include "OMODFrameworkWrapper.h"
 

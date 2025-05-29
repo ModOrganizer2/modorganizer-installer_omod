@@ -9,9 +9,9 @@
 #include <QMessageBox>
 #include <QScreen>
 
-#include <iplugingame.h>
-#include <ipluginlist.h>
-#include <log.h>
+#include <uibase/iplugingame.h>
+#include <uibase/ipluginlist.h>
+#include <uibase/log.h>
 
 #include "../interop/QtDotNetConverters.h"
 #include "../newstuff/rtfPopup.h"
@@ -20,7 +20,7 @@
 ScriptFunctionsHelper::ScriptFunctionsHelper() : mMessageBoxHelper(make_unique<MessageBoxHelper>())
 {
   moveToThread(QApplication::instance()->thread());
-  
+
   connect(this, &ScriptFunctionsHelper::DialogSelectSignal, this, &ScriptFunctionsHelper::DialogSelectSlot, Qt::BlockingQueuedConnection);
   connect(this, &ScriptFunctionsHelper::InputStringSignal, this, &ScriptFunctionsHelper::InputStringSlot, Qt::BlockingQueuedConnection);
   connect(this, &ScriptFunctionsHelper::DisplayImageSignal, this, &ScriptFunctionsHelper::DisplayImageSlot, Qt::BlockingQueuedConnection);

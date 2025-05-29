@@ -2,7 +2,7 @@
 
 #include <QDialog>
 
-#include <guessedvalue.h>
+#include <uibase/guessedvalue.h>
 
 #include "ui_namedialog.h"
 

@@ -6,7 +6,7 @@ using namespace cli;
 
 #include <QWidget>
 
-#include <imoinfo.h>
+#include <uibase/imoinfo.h>
 
 #include "../MessageBoxHelper.h"
 #include "../QObject_unique_ptr.h"
