@@ -272,7 +272,7 @@ OMODFrameworkWrapper::EInstallResult OMODFrameworkWrapper::install(MOBase::Guess
           // force-enabled by engine
           auto bsas = dataArchives->vanillaArchives();
           // explicitly enabled in INI. For Oblivion, excludes the vanilla BSAs by default.
-          bsas.append(dataArchives->archives(mMoInfo->profile()));
+          bsas.append(dataArchives->archives(mMoInfo->profile().get()));
           for (const auto& bsa : bsas)
           {
             QString path = mMoInfo->resolvePath(bsa);
